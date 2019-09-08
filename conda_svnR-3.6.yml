@@ -1,0 +1,55 @@
+name: svnR-3.6
+channels:
+  - anaconda
+  - nodefaults
+dependencies:
+  - binutils_linux-64=2.31.1
+  - bzip2
+  - cairo
+  - curl
+  - fontconfig
+  - freetype
+  - fribidi
+  - gcc_linux-64=7.3.0
+  - gfortran_linux-64=7.3.0
+  - glib
+  - gmp
+  - graphite2
+  - gsl
+  - gxx_linux-64=7.3.0
+  - harfbuzz
+  - hdf5
+  - icu
+  - jpeg
+  - krb5
+  - libcurl
+  - libedit
+  - libffi
+  - libiconv
+  - libnetcdf
+  - libpng
+  - libssh2
+  - libtiff
+  - libuuid
+  - libxcb
+  - libxml2
+  - make
+  - mpc
+  - mpfr
+  - ncurses
+  - openjpeg
+  - pandoc
+  - pango
+  - pcre
+  - pixman
+  - pkg-config
+  - poppler
+  - readline
+  - sqlite
+  - texinfo
+  - tk
+  - tktable
+  - xz
+  - zlib
+  - zstd
+
