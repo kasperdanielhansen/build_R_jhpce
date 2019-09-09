@@ -2,12 +2,12 @@
 # It will NOT be updated and reflects only the
 # installation profile at installation time.
 selected_scheme scheme-custom
-TEXDIR /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6/texlive
+TEXDIR /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6.x/texlive
 TEXMFCONFIG ~/.texlive2019/texmf-config
 TEXMFHOME ~/texmf
-TEXMFLOCAL /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6/texlive/texmf-local
-TEXMFSYSCONFIG /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6/texlive/texmf-config
-TEXMFSYSVAR /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6/texlive/texmf-var
+TEXMFLOCAL /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6.x/texlive/texmf-local
+TEXMFSYSCONFIG /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6.x/texlive/texmf-config
+TEXMFSYSVAR /jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6.x/texlive/texmf-var
 TEXMFVAR ~/.texlive2019/texmf-var
 binary_x86_64-linux 1
 collection-basic 1
