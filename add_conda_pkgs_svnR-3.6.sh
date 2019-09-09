@@ -22,9 +22,9 @@ conda install -c conda-forge \
   xorg-xproto
 
 ## Installing texlive
-## This requires the presence of texlive/install-tl-20190904/install-tl
+## This requires the presence of `install-tl-20190904/install-tl`
 ## which is the "standard" texlive installation script
-texlive/install-tl-20190904/install-tl --profile conda_${R_NAME}_texlive.profile
+install-tl-20190904/install-tl --profile conda_${R_NAME}_texlive.profile
 export PATH=/jhpce/shared/jhpce/core/conda/miniconda${CONDA_VERSION}/envs/${R_NAME}/texlive/bin/x86_64-linux:${PATH}
 texhash
 tlmgr paper letter
