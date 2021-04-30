@@ -1,0 +1,5 @@
+R-*-build
+R-*-src
+*~
+*.sh.o*
+
