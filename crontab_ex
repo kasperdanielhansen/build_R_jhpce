@@ -1,0 +1,3 @@
+SHELL=/bin/bash
+MAILTO=khansen@jhsph.edu
+0 6 * * * /users/khansen/build/build_R_jhpce/cron.R.sh
