@@ -2,15 +2,13 @@
 #$ -V -j yes -S /bin/bash
 #$ -m n -M kasperdanielhansen@gmail.com
 
-###   -----    #$ -l download
-
 set -e
 
 R_VERSION=3.6.x
 SVNLOC=https://svn.r-project.org/R/branches/R-3-6-branch
 
 ## module load conda_R/${R_VERSION}
-module load test_R/${R_VERSION}
+module load conda_R/${R_VERSION}
 module load conda
 CONDA_PREFIX=`conda info --json | grep default_prefix | sed 's|  "default_prefix": "||' | sed 's|",$||'`
 export PATH=${CONDA_PREFIX}/texlive/bin/x86_64-linux:${PATH} # Required in case custom texlive is not at the root of the PATH

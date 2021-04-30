@@ -2,7 +2,7 @@
 set -e
 
 CONDA_VERSION=3-4.6.14
-R_NAME=svnR-3.6
+R_NAME=svnR-test
 module load conda/${CONDA_VERSION}
 
 source activate /jhpce/shared/jhpce/core/conda/miniconda${CONDA_VERSION}/envs/${R_NAME}

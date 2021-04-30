@@ -1,8 +1,14 @@
 ## -*- R -*-
 
-options(configure.args = c(Rmpi = "--with-Rmpi-type=OPENMPI",
-                           rgl = "--with-gl-includes=/usr/include --with-gl-libraries=/usr/lib64"))
+
+
+options(configure.args = c(Rmpi = "--with-Rmpi-type=OPENMPI"))
+                           
+#                           rgl = "--with-gl-includes=/usr/include --with-gl-libraries=/usr/lib64",
+#                           Rhdf5lib = "--with-zlib=/jhpce/shared/jhpce/core/conda/miniconda3-4.6.14/envs/svnR-3.6.x"))
 options(max.print = 1500)
+
+options(repos = c(CRAN= "https://cran.rstudio.com"))
 
 local({
     hname <- system("/bin/hostname", intern = TRUE)
@@ -61,230 +67,11 @@ local({
             } else cat("  none\n")
         }
     }
+    if(interactive()) {
+        cat("******* End NEWS ***********\n")
+    }
 })
 
-
-hopkins.software.pkgs <-
-    c("abind", "ACME", "affxparser", "affy", "affycomp", "affydata", "affyio", "affyPLM", "affyQCReport",
-        "akima", "alr3", "animation", "annaffy", "annotate", "AnnotationDbi", "aroma.affymetrix", "aroma.light",
-        "arrayQualityMetrics", "arules", "aws",
-      "beanplot", "beadarray", "biganalytics", "bigmemory", "bindata", "Biobase", "BiocCheck", "biomaRt", "Biostrings",
-        "bit", "bitops", "BSgenome", "BufferedMatrix", "BufferedMatrixMethods", "bumphunter",
-      "CAMERA", "Category", "caTools", "charm", "ChAMP", "ChIPpeakAnno", "codetools", "coin", "corpcor", "CoGAPS",
-        "crlmm", "cummeRbund",
-      "data.table", "DBChIP", "DBI", "DESeq", "devtools", "DiffBind", "digest", "DNAcopy",
-      "doMC", "doParallel", "doMPI", "doRNG", "dplyr", "drc", "dtw", "DynDoc",
-      "e1071", "EBImage", "edgeR", "ellipse",
-      "fdrtool", "ff", "fields", "foreach", "fortunes", "frma", "future",
-      "gam", "gcrma", "gdata", "gdistance", "genefilter", "GeneRegionScan", "GeneMeta", "geneplotter", "GenomicFeatures", "GenomicFiles",
-        "GenomeGraphs", "genomeIntervals", "GenomicRanges", "GenomicScores", "Genominator", "GEOquery", "geoR", "GGBase",
-        "ggplot2", "GGtools", "git2r", "gmodels", "GOstats", "gplots", "graph", "GSEABase", "gstat", "gsubfn", "gtools", "Gviz", "GWASTools",
-      "haplo.stats", "hexbin", "hwriter", "Hmisc",
-      "ijtiff", "intergraph", "intervals", "IRanges", "iterators", "itertools",
-      "knitr",
-      "latticeExtra", "lawstat", "limma", "lme4", "locfit", "LogicReg", "lumi", "lumiHumanIDMapping",
-      "magic", "maptools", "marray", "matrixStats", "mclust", "MCMCpack", "MergeMaid", "metaArray", "MethylSeekR",
-        "methyAnalysis", "methylumi", "minfi", "mixOmics", "modeltools", "msm", "multtest", "mvtnorm", "mzR",
-      "nor1mix",
-      "oligo", "oligoClasses",
-      "pastecs", "pdInfoBuilder", "plotrix", "plyr", "PMA", "polspline", "preprocessCore", "ProjectTemplate", "pryr", 
-      "qpdf", "quadprog", "quantreg", "QuasR", "qvalue",
-      "R.huge", "R.utils", "raster", "RBGL", "RColorBrewer", "Rcpp", "RcppArmadillo", "RCurl", "readr", "readxl", "recount", "refund",
-        "reshape", "rgl", "Rmpi", "rms", "RMySQL", "ROC", "ROCR", "Rsamtools", "RSQLite", "rstan", "rtracklayer", "RUnit", "ruv",
-      "scholar", "scrime", "seqbias", "seriation", "shiny", "siggenes", "simpleaffy", "ShortRead",
-        "SNPchip", "snpStats", "sp", "spam", "splancs", "SQN", "SRAdb", "statmod", "sva", "synchronicity",
-      "trio", "twilight",
-      "VanillaICE", "VariantAnnotation", "VGAM", "vsn",
-      "wateRmelon", "wavethresh",
-      "xcms", "XDE", "XML", "xtable", "xlsx",
-      "yamss")
-
-hopkins.data.pkgs <-
-    c("AffymetrixDataTestFiles",
-      "bsseqData",
-      "charmData",
-      "drosophila2probe",
-      "FlowSorted.Blood.450k", "frmaExampleData",
-      "genomewidesnp5Crlmm", "genomewidesnp6Crlmm", "GGdata", "GO.db",
-      "hapmap100khind", "hapmap100kxba", "hapmap500knsp", "hapmap500ksty", "hapmapsnp5", "hapmapsnp6",
-        "hgu133acdf", "hgu133a.db", "hgu133plus2cdf", "hgu133plus2.db", "hgu133plus2barcodevecs",
-        "hgu133plus2frmavecs", "hgu95acdf", "hgu95av2cdf", "hgu95av2.db", "hgu95av2probe",
-        "hmyriB36", "Homo.sapiens", "hthgu133acdf", "hthgu133pluspmcdf", "hugene10stprobeset.db",
-        "hugene10sttranscriptcluster.db", "human1mduov3bCrlmm", "human1mv1cCrlmm", "human370v1cCrlmm",
-        "human610quadv1bCrlmm", "illuminaHumanv1.db",
-      "IlluminaDataTestFiles",
-        "IlluminaHumanMethylation450kmanifest", "IlluminaHumanMethylation27kmanifest",
-        "IlluminaHumanMethylationEPICmanifest",
-        "IlluminaHumanMethylation450kanno.ilmn12.hg19", "IlluminaHumanMethylation27kanno.ilmn12.hg19",
-        "ind1KG", 
-      "KEGG.db",
-      "leeBamViews", "lumiHumanAll.db",
-      "maqcExpression4plex", "mgug4104a.db", "mgug4121a.db", "mgug4122a.db", "minfiData", "minfiDataEPIC", "minfiData27k",
-        "moe430a.db", "moe430b.db", "mouse4302.db", "mouse430a2probe", "mouse.db0", "msdata",
-      "org.Hs.eg.db", "org.Mm.eg.db", 
-      "pd.2006.07.18.hg18.refseq.promoter", "pd.2006.07.18.mm8.refseq.promoter",
-        "pd.2006.10.31.rn34.refseq.promoter", "pd.charm.hg18.example", "pd.cytogenetics.array",
-        "pd.genomewidesnp.5", "pd.genomewidesnp.6", "pd.feinberg.hg18.me.hx1", "pd.feinberg.mm8.me.hx1",
-        "pd.hg18.60mer.expr", "pd.hg.u95a", "pd.hg.u95av2", "pd.ht.hg.u133.plus.pm", "pd.huex.1.0.st.v2",
-        "pd.hugene.1.0.st.v1", "pd.huex.1.0.st.v2", "pd.mapping250k.nsp", "pd.mapping250k.sty",
-        "pd.mapping50k.hind240", "pd.mapping50k.xba240", "pd.moex.1.0.st.v1", "pd.mogene.1.0.st.v1",
-        "pd.ragene.1.0.st.v1",
-      "SNPlocs.Hsapiens.dbSNP.20090506",
-        "SNPlocs.Hsapiens.dbSNP.20100427", "SNPlocs.Hsapiens.dbSNP.20101109",
-        "SNPlocs.Hsapiens.dbSNP.20110815", "SNPlocs.Hsapiens.dbSNP.20111119", 
-        "SNPlocs.Hsapiens.dbSNP.20120608", 
-      "TxDb.Athaliana.BioMart.plantsmart10", "TxDb.Athaliana.BioMart.plantsmart12",
-        "TxDb.Celegans.UCSC.ce6.ensGene", "TxDb.Dmelanogaster.UCSC.dm3.ensGene",
-        "TxDb.Hsapiens.UCSC.hg18.knownGene", "TxDb.Hsapiens.UCSC.hg19.knownGene",
-        "TxDb.Hsapiens.UCSC.hg19.lincRNAsTranscripts",
-        "TxDb.Mmusculus.UCSC.mm10.ensGene", "TxDb.Mmusculus.UCSC.mm9.knownGene",
-        "TxDb.Mmusculus.UCSC.mm10.knownGene",
-        "TxDb.Rnorvegicus.UCSC.rn4.ensGene", "TxDb.Scerevisiae.UCSC.sacCer2.sgdGene",
-      "yeastRNASeq")
-
-
-hopkins <- list(
-    install.software = function(updateOnly = TRUE, fixPermissions = TRUE) {
-        .libPaths(.Library.site)
-        require(BiocManager)
-        to_install <- hopkins.software.pkgs
-        if(updateOnly)
-            to_install <- setdiff(to_install, rownames(installed.packages()))
-        cat(".libPaths():\n")
-        print(.libPaths())
-        cat("configure.args:\n")
-        print(getOption("configure.args"))
-        cat("configure.vars:\n")
-        print(getOption("configure.vars"))
-        hopkins$removelock()
-        BiocManager::install(to_install, INSTALL_opts = "--pkglock", lib = .Library.site, type = "source")
-        if(fixPermissions)
-            hopkins$fixpermissions()
-},
-install.data = function(updateOnly = TRUE, withGenomes = TRUE, fixPermissions = TRUE){
-        .libPaths(.Library.site)
-        require(BiocManager)
-        to_install <- hopkins.data.pkgs
-        if(withGenomes && require(BSgenome))
-            to_install <- c(to_install, BSgenome::available.genomes())
-        if(updateOnly)
-            to_install <- setdiff(to_install, rownames(installed.packages()))
-        cat(".libPaths():\n")
-        print(.libPaths())
-        cat("configure.args:\n")
-        print(getOption("configure.args"))
-        cat("configure.vars:\n")
-        print(getOption("configure.vars"))
-        hopkins$removelock()
-        BiocManager::install(to_install, INSTALL_opts = "--pkglock", lib = .Library.site, type = "source")
-        if(fixPermissions)
-            hopkins$fixpermissions()
-},
-install.all = function(updateOnly = TRUE, fixPermissions = TRUE) {
-        hopkins$install.software(updateOnly = updateOnly, fixPermissions = fixPermissions)
-        hopkins$install.data(updateOnly = updateOnly, withGenomes = TRUE, fixPermissions = fixPermissions)
-    },
-    size = function(envir = as.environment(-1), all = FALSE){
-        sizes <- sapply(ls(envir = parent.frame()), function(x)
-                        object.size(get(x)))
-        names(sizes) <- ls(envir = parent.frame())
-        sizes <- sort(sizes, decreasing = TRUE)
-        units <- ifelse(sizes >= 1024^3, paste(round(sizes/1024^3, 1L), "Gb"),
-                        ifelse(sizes >= 1024^2, paste(round(sizes/1024^2,
-                               1L), "Mb"),
-                               ifelse(sizes >= 1024,
-                                      paste(round(sizes/1024, 1L), "Kb"),
-                                      paste(sizes, "bytes"))))
-        if(!all) {
-            print(cbind(units = units[sizes >= 1024^2]), quote = FALSE)
-        } else {
-            print(cbind(units), quote = FALSE)
-        }
-        invisible(sizes)
-    },
-    fixpermissions = function() {
-        cat("Fixing permissions\n")
-        errcode <- system(sprintf("find %s \\! -group swdev -exec swdev biocR {} \\;", .Library.site))
-        if(errcode != 0)
-            cat("  setting group to swdev failed\n")
-        ## errcode <- system(sprintf("find %s -type d \\! -perm -g+rwxs -exec chmod g+rwxs {} \\;", .Library.site))
-        ## if(errcode != 0)
-        ##         cat("  setting directory permissions failed\n")
-        ##     errcode <- system(sprintf("find %s -type f \\! -perm -g+rw -exec chmod g+rw {} \\;", .Library.site))
-        ##     if(errcode != 0)
-        ##         cat("  setting file permissions read/write failed\n")
-        ##     errcode <- system(sprintf("find %s -type f -perm u+x \\! -perm -g+x -exec chmod g+x {} \\;", .Library.site))
-        ##     if(errcode != 0)
-        ##         cat("  setting file permissions executable failed\n")
-    },
-    removelock = function() {
-        lockfiles <- list.files(.Library.site, pattern = "00LOCK", full.names = TRUE)
-        if(length(lockfiles) > 0) {
-            sapply(lockfiles, function(file) system(paste("rm -Rf", file)))
-            if(any(file.exists(lockfiles))) {
-                stop("Lockfile still exists, removal failed")
-            }
-        }
-    },
-    update = function(..., ask = FALSE){
-        .libPaths(.Library.site)
-        require(BiocManager)
-        hopkins$removelock()
-        BiocManager::install()
-        hopkins$fixpermissions()
-    },
-    install = function(...){
-        .libPaths(.Library.site)
-        library(BiocManager)
-        hopkins$removelock()
-        BiocManager::install(..., INSTALL_opts = "--pkglock", lib = .Library.site, type = "source")
-        hopkins$fixpermissions()
-    },
-    local.install = function(...){
-        .libPaths(.Library.site)
-        install.packages(..., INSTALL_opts = "--pkglock", repos = NULL, lib = .Library.site)
-        hopkins$fixpermissions()
-    },
-    local.install.dir = function(dir) {
-        all.pkgs <- list.files(dir, pattern = "tar.gz", full.names = TRUE)
-        names(all.pkgs) <- sub("_.*", "", basename(all.pkgs))
-        all.pkgs <- all.pkgs[ ! names(all.pkgs) %in% rownames(installed.packages())]
-        .libPaths(.Library.site)
-        sapply(all.pkgs, function(xx) {
-            install.packages(xx, INSTALL_opts = "--pkglock", repos = NULL, lib = .Library.site)
-        })
-        hopkins$fixpermissions()
-    },
-    local.packages = function(type = getOption("pkgType")) {
-        .libPaths(.Library.site)
-        if(class(try(suppressWarnings(source("http://www.bioconductor.org/biocLite.R"))))  == "try-error")
-            return("Unable to access the internet")
-        avail <- rownames(available.packages(contrib.url(biocinstallRepos(), type)))
-        install <- rownames(installed.packages(priority = "NA"))
-        locals <- setdiff(install, avail)
-        locals
-    },
-    host.status = function() {
-        host.name <- Sys.getenv("HOSTNAME")
-        host.cmd <- paste("qhost -j -h", host.name)
-        invisible(system(host.cmd))
-    },
-    loadall = function(pkgs = NULL) {
-        if(is.null(pkgs))
-            pkgs <- rownames(installed.packages(lib.loc = .Library.site))
-        loadres <- sapply(pkgs, function(pkg) {
-            tryLoad <- try(library(package = pkg, character.only = TRUE))
-            if(class(tryLoad) == "try-error")
-                out <- pkg
-            else
-                out <- ""
-            try(detach(sprintf("package:%s", pkg), character.only = TRUE, unload = TRUE))
-            out
-        })
-        loadres <- loadres[which(loadres != "")]
-        loadres
-    }
-)
 
 
 #### Local Variables:

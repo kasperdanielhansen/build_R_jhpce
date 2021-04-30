@@ -9,6 +9,7 @@ source activate /jhpce/shared/jhpce/core/conda/miniconda${CONDA_VERSION}/envs/${
 
 ## Installing X11 from conda-forge
 conda install -c conda-forge \
+  libgit2\
   xorg-kbproto\
   xorg-libice\
   xorg-libsm\

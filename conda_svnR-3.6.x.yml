@@ -4,6 +4,7 @@ channels:
   - nodefaults
 dependencies:
   - binutils_linux-64=2.31.1
+  - boost
   - bzip2
   - cairo
   - curl
@@ -42,6 +43,7 @@ dependencies:
   - pandoc
   - pango
   - pcre
+  - pigz
   - pixman
   - pkg-config
   - poppler
